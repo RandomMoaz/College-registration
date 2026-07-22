@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "Node/Express API for the University Online registration system",
   "main": "server.js",
-    "engines": {
-    "node": ">=20"
-  },
   "scripts": {
     "start": "node server.js",
     "dev": "node --watch server.js"
