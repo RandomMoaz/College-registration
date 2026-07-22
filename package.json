@@ -1,0 +1,16 @@
+{
+  "name": "college-registration",
+  "version": "1.0.0",
+  "private": true,
+  "description": "University Online registration system — Express + SQLite API with a React (Vite) frontend, served as one app.",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "setup": "npm --prefix Backend install && npm --prefix Frontend install && npm --prefix Frontend run build",
+    "start": "npm --prefix Backend start",
+    "demo": "npm run setup && npm start",
+    "dev:api": "npm --prefix Backend run dev",
+    "dev:ui": "npm --prefix Frontend run dev"
+  }
+}
