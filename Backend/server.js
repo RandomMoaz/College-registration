@@ -1,7 +1,10 @@
+
 // server.js — University Online registration API
 const express = require('express');
 const cors = require('cors');
 const crypto = require('crypto');
+const path = require('path');
+const fs = require('fs');
 const db = require('./database');
 
 const app = express();
@@ -150,5 +153,21 @@ app.get('/api/term', auth(), (req, res) => res.json(db.getTerm()));
 app.post('/api/term/exam-period', auth(), (req, res) => res.json(db.setExamPeriod(!!req.body?.on)));
 
 app.get('/api/health', (req, res) => res.json({ ok: true }));
+
+/* =================== SERVE BUILT FRONTEND ==================== */
+/* Must stay below every /api route so it doesn't swallow them.  */
+const DIST = path.join(__dirname, '..', 'Frontend', 'dist');
+
+// Any unmatched /api/* path is a real 404, not a page request.
+app.use('/api', (req, res) => res.status(404).json({ error: 'Not found' }));
+
+// Only serve the SPA if it has actually been built (run `npm run build`
+// in Frontend/). In dev you use the Vite server + proxy instead.
+if (fs.existsSync(path.join(DIST, 'index.html'))) {
+  app.use(express.static(DIST));
+  // Everything else falls through to the React app (client-side routing).
+  app.get('*', (req, res) => res.sendFile(path.join(DIST, 'index.html')));
+  console.log(`🖥️  Serving built frontend from ${DIST}`);
+}
 
 app.listen(PORT, () => console.log(`✅ API running on http://localhost:${PORT}`));

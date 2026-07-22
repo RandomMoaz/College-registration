@@ -7,8 +7,10 @@ export function setToken(t) {
 }
 export function getToken() { return token; }
 
+const API_BASE = import.meta.env.VITE_API_URL || '/api';
+
 async function req(path, opts = {}) {
-  const res = await fetch('/api' + path, {
+  const res = await fetch(API_BASE + path, {
     headers: {
       'Content-Type': 'application/json',
       ...(token ? { Authorization: 'Bearer ' + token } : {}),
