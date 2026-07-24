@@ -8,28 +8,8 @@ A University Online registration system — Node/Express + SQLite API with a Rea
 | Student | `student@uni.edu` | `1234`   |
 | Staff   | `staff@uni.edu`   | `1234`   |
 
-> **Windows PowerShell note:** PowerShell 5.1 doesn't support `&&`. Use `;` to
-> separate commands (as shown below), or run each line on its own.
 
-## Run locally (development)
-Two terminals, hot-reload on both:
-```powershell
-# 1) API on http://localhost:4000
-cd Backend; npm install; npm start
 
-# 2) UI on http://localhost:5173 (Vite proxies /api -> :4000)
-cd Frontend; npm install; npm run dev
-```
-Open http://localhost:5173.
-
-## Run as a single service (live demo / production)
-The backend serves the built frontend, so everything runs on one origin and
-the frontend's relative `/api` calls work with no proxy:
-```powershell
-cd Frontend; npm install; npm run build   # produces Frontend/dist
-cd ../Backend; npm install; npm start      # serves API + UI on one port
-```
-Open http://localhost:4000.
 
 ### Environment variables (set these when deploying)
 | Variable       | Default                | Notes |
