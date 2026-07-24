@@ -48,7 +48,7 @@ export function StaffRoster() {
         <div className="card" key={r.code} style={{ marginBottom: 14 }}>
           <h2>{r.code} — {r.name}</h2>
           <p className="lead">{r.enrolled} enrolled · {r.slot} · {r.room}</p>
-          <table>
+          <div className="table-wrap"><table>
             <thead><tr><th>Student ID</th><th>Name</th><th className="num">GPA</th><th>Status</th></tr></thead>
             <tbody>
               {r.students.map((s) => (
@@ -58,7 +58,7 @@ export function StaffRoster() {
                 </tr>
               ))}
             </tbody>
-          </table>
+          </table></div>
         </div>
       ))}
     </>
@@ -99,7 +99,7 @@ export function StaffExams() {
       <div className="banner warn">⚠️ You are the responsible invigilator for the courses below.</div>
       <div className="card">
         <h2>Your exams</h2>
-        <table>
+        <div className="table-wrap"><table>
           <thead><tr><th>Code</th><th>Subject</th><th>Date</th><th>Time</th><th>Hall</th><th>Students</th></tr></thead>
           <tbody>
             {data.exams.map((e) => (
@@ -108,7 +108,7 @@ export function StaffExams() {
               </tr>
             ))}
           </tbody>
-        </table>
+        </table></div>
       </div>
     </>
   );

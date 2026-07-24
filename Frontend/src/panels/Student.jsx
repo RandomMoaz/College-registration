@@ -45,7 +45,7 @@ export function Overview({ goTab }) {
         <div className="card">
           <h2>Completed subjects</h2>
           <p className="lead">Your transcript — passed courses count toward your degree.</p>
-          <table>
+          <div className="table-wrap"><table>
             <thead><tr><th>Code</th><th>Subject</th><th className="num">Cr</th><th>Status</th><th className="num">Grade</th></tr></thead>
             <tbody>
               {me.completed.map((c) => (
@@ -56,13 +56,13 @@ export function Overview({ goTab }) {
                 </tr>
               ))}
             </tbody>
-          </table>
+          </table></div>
         </div>
 
         <div className="card">
           <h2>Uncompleted subjects</h2>
           <p className="lead">{me.remaining.length} subjects remain in your degree plan.</p>
-          <table>
+          <div className="table-wrap"><table>
             <thead><tr><th>Code</th><th>Subject</th><th className="num">Cr</th><th>Availability</th></tr></thead>
             <tbody>
               {me.remaining.map((c) => (
@@ -74,7 +74,7 @@ export function Overview({ goTab }) {
                 </tr>
               ))}
             </tbody>
-          </table>
+          </table></div>
           <div className="banner info" style={{ marginTop: 14 }}>
             Head to <b style={{ cursor: 'pointer', textDecoration: 'underline' }} onClick={() => goTab('register')}>Register</b> to enroll in this term's open classes.
           </div>
@@ -296,7 +296,7 @@ export function Exams() {
       <div className="card">
         <h2>Your final exams</h2>
         <p className="lead">{data.exams.length} subjects scheduled</p>
-        <table>
+        <div className="table-wrap"><table>
           <thead><tr><th>Code</th><th>Subject</th><th>Date</th><th>Time</th><th>Hall</th><th>Seat</th></tr></thead>
           <tbody>
             {data.exams.map((e) => (
@@ -306,7 +306,7 @@ export function Exams() {
               </tr>
             ))}
           </tbody>
-        </table>
+        </table></div>
       </div>
     </>
   );
