@@ -1,8 +1,12 @@
 const Database = require('better-sqlite3');
 const path = require('path');
 
-const sqlite = new Database(path.join(__dirname, 'college.db'));
-sqlite.pragma('journal_mode = WAL');
+// On Vercel (and other read-only/serverless filesystems) we can't write a DB
+// file, so use an in-memory database that is re-seeded on each cold start.
+// Locally we keep the persistent college.db file.
+const IN_MEMORY = !!process.env.VERCEL;
+const sqlite = new Database(IN_MEMORY ? ':memory:' : path.join(__dirname, 'college.db'));
+if (!IN_MEMORY) sqlite.pragma('journal_mode = WAL');
 
 // ─── Schema ───────────────────────────────────────────────────────────────────
 sqlite.exec(`

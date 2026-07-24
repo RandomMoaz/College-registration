@@ -12,5 +12,10 @@
     "demo": "npm run setup && npm start",
     "dev:api": "npm --prefix Backend run dev",
     "dev:ui": "npm --prefix Frontend run dev"
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.11.1",
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
   }
 }

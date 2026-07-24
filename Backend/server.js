@@ -170,4 +170,10 @@ if (fs.existsSync(path.join(DIST, 'index.html'))) {
   console.log(`🖥️  Serving built frontend from ${DIST}`);
 }
 
-app.listen(PORT, () => console.log(`✅ API running on http://localhost:${PORT}`));
+// Start a real server only when run directly (`node server.js` / `npm start`).
+// When imported (e.g. by a Vercel serverless function) we just export the app.
+if (require.main === module) {
+  app.listen(PORT, () => console.log(`✅ API running on http://localhost:${PORT}`));
+}
+
+module.exports = app;
